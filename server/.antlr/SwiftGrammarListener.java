@@ -1,4 +1,4 @@
-// Generated from c:/Users/darkm/OneDrive/Documentos/Proyectos/OLC2_SegundoSemestre_2023/Proyecto2/Server2/SwiftGrammar.g4 by ANTLR 4.13.1
+// Generated from c://Users//pbara//OneDrive//Escritorio//T-Swift-Compiler//server//SwiftGrammar.g4 by ANTLR 4.13.1
 
     import "Server2/interfaces"
     import "Server2/environment"
@@ -44,56 +44,6 @@ public interface SwiftGrammarListener extends ParseTreeListener {
 	 */
 	void exitInstruction(SwiftGrammarParser.InstructionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SwiftGrammarParser#structCreation}.
-	 * @param ctx the parse tree
-	 */
-	void enterStructCreation(SwiftGrammarParser.StructCreationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SwiftGrammarParser#structCreation}.
-	 * @param ctx the parse tree
-	 */
-	void exitStructCreation(SwiftGrammarParser.StructCreationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SwiftGrammarParser#listStructDec}.
-	 * @param ctx the parse tree
-	 */
-	void enterListStructDec(SwiftGrammarParser.ListStructDecContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SwiftGrammarParser#listStructDec}.
-	 * @param ctx the parse tree
-	 */
-	void exitListStructDec(SwiftGrammarParser.ListStructDecContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SwiftGrammarParser#function}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunction(SwiftGrammarParser.FunctionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SwiftGrammarParser#function}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunction(SwiftGrammarParser.FunctionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SwiftGrammarParser#listParamsFunc}.
-	 * @param ctx the parse tree
-	 */
-	void enterListParamsFunc(SwiftGrammarParser.ListParamsFuncContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SwiftGrammarParser#listParamsFunc}.
-	 * @param ctx the parse tree
-	 */
-	void exitListParamsFunc(SwiftGrammarParser.ListParamsFuncContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SwiftGrammarParser#assignment}.
-	 * @param ctx the parse tree
-	 */
-	void enterAssignment(SwiftGrammarParser.AssignmentContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SwiftGrammarParser#assignment}.
-	 * @param ctx the parse tree
-	 */
-	void exitAssignment(SwiftGrammarParser.AssignmentContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link SwiftGrammarParser#printstmt}.
 	 * @param ctx the parse tree
 	 */
@@ -123,6 +73,76 @@ public interface SwiftGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDeclarationstmt(SwiftGrammarParser.DeclarationstmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#assignstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterAssignstmt(SwiftGrammarParser.AssignstmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#assignstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitAssignstmt(SwiftGrammarParser.AssignstmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#fnstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterFnstmt(SwiftGrammarParser.FnstmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#fnstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitFnstmt(SwiftGrammarParser.FnstmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#listParamsFunc}.
+	 * @param ctx the parse tree
+	 */
+	void enterListParamsFunc(SwiftGrammarParser.ListParamsFuncContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#listParamsFunc}.
+	 * @param ctx the parse tree
+	 */
+	void exitListParamsFunc(SwiftGrammarParser.ListParamsFuncContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#parametro}.
+	 * @param ctx the parse tree
+	 */
+	void enterParametro(SwiftGrammarParser.ParametroContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#parametro}.
+	 * @param ctx the parse tree
+	 */
+	void exitParametro(SwiftGrammarParser.ParametroContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#callExp}.
+	 * @param ctx the parse tree
+	 */
+	void enterCallExp(SwiftGrammarParser.CallExpContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#callExp}.
+	 * @param ctx the parse tree
+	 */
+	void exitCallExp(SwiftGrammarParser.CallExpContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#callFunction}.
+	 * @param ctx the parse tree
+	 */
+	void enterCallFunction(SwiftGrammarParser.CallFunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#callFunction}.
+	 * @param ctx the parse tree
+	 */
+	void exitCallFunction(SwiftGrammarParser.CallFunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#listParamsCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterListParamsCall(SwiftGrammarParser.ListParamsCallContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#listParamsCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitListParamsCall(SwiftGrammarParser.ListParamsCallContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SwiftGrammarParser#types}.
 	 * @param ctx the parse tree
@@ -154,6 +174,16 @@ public interface SwiftGrammarListener extends ParseTreeListener {
 	 */
 	void exitListParams(SwiftGrammarParser.ListParamsContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#listAccessArray}.
+	 * @param ctx the parse tree
+	 */
+	void enterListAccessArray(SwiftGrammarParser.ListAccessArrayContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#listAccessArray}.
+	 * @param ctx the parse tree
+	 */
+	void exitListAccessArray(SwiftGrammarParser.ListAccessArrayContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SwiftGrammarParser#listArray}.
 	 * @param ctx the parse tree
 	 */
@@ -164,33 +194,13 @@ public interface SwiftGrammarListener extends ParseTreeListener {
 	 */
 	void exitListArray(SwiftGrammarParser.ListArrayContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SwiftGrammarParser#callFunction}.
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#exprComa}.
 	 * @param ctx the parse tree
 	 */
-	void enterCallFunction(SwiftGrammarParser.CallFunctionContext ctx);
+	void enterExprComa(SwiftGrammarParser.ExprComaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SwiftGrammarParser#callFunction}.
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#exprComa}.
 	 * @param ctx the parse tree
 	 */
-	void exitCallFunction(SwiftGrammarParser.CallFunctionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SwiftGrammarParser#listParamsCall}.
-	 * @param ctx the parse tree
-	 */
-	void enterListParamsCall(SwiftGrammarParser.ListParamsCallContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SwiftGrammarParser#listParamsCall}.
-	 * @param ctx the parse tree
-	 */
-	void exitListParamsCall(SwiftGrammarParser.ListParamsCallContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SwiftGrammarParser#listStructExp}.
-	 * @param ctx the parse tree
-	 */
-	void enterListStructExp(SwiftGrammarParser.ListStructExpContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SwiftGrammarParser#listStructExp}.
-	 * @param ctx the parse tree
-	 */
-	void exitListStructExp(SwiftGrammarParser.ListStructExpContext ctx);
+	void exitExprComa(SwiftGrammarParser.ExprComaContext ctx);
 }

@@ -1,4 +1,4 @@
-// Generated from c:/Users/darkm/OneDrive/Documentos/Proyectos/OLC2_SegundoSemestre_2023/Proyecto2/Server2/SwiftGrammar.g4 by ANTLR 4.13.1
+// Generated from c://Users//pbara//OneDrive//Escritorio//T-Swift-Compiler//server//SwiftGrammar.g4 by ANTLR 4.13.1
 
     import "Server2/interfaces"
     import "Server2/environment"
@@ -59,66 +59,6 @@ public class SwiftGrammarBaseListener implements SwiftGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStructCreation(SwiftGrammarParser.StructCreationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitStructCreation(SwiftGrammarParser.StructCreationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterListStructDec(SwiftGrammarParser.ListStructDecContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitListStructDec(SwiftGrammarParser.ListStructDecContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFunction(SwiftGrammarParser.FunctionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunction(SwiftGrammarParser.FunctionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterListParamsFunc(SwiftGrammarParser.ListParamsFuncContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitListParamsFunc(SwiftGrammarParser.ListParamsFuncContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAssignment(SwiftGrammarParser.AssignmentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAssignment(SwiftGrammarParser.AssignmentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterPrintstmt(SwiftGrammarParser.PrintstmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -150,6 +90,90 @@ public class SwiftGrammarBaseListener implements SwiftGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDeclarationstmt(SwiftGrammarParser.DeclarationstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAssignstmt(SwiftGrammarParser.AssignstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAssignstmt(SwiftGrammarParser.AssignstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFnstmt(SwiftGrammarParser.FnstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFnstmt(SwiftGrammarParser.FnstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterListParamsFunc(SwiftGrammarParser.ListParamsFuncContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitListParamsFunc(SwiftGrammarParser.ListParamsFuncContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParametro(SwiftGrammarParser.ParametroContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParametro(SwiftGrammarParser.ParametroContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCallExp(SwiftGrammarParser.CallExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCallExp(SwiftGrammarParser.CallExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCallFunction(SwiftGrammarParser.CallFunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCallFunction(SwiftGrammarParser.CallFunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterListParamsCall(SwiftGrammarParser.ListParamsCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitListParamsCall(SwiftGrammarParser.ListParamsCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -191,6 +215,18 @@ public class SwiftGrammarBaseListener implements SwiftGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterListAccessArray(SwiftGrammarParser.ListAccessArrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitListAccessArray(SwiftGrammarParser.ListAccessArrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterListArray(SwiftGrammarParser.ListArrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -203,37 +239,13 @@ public class SwiftGrammarBaseListener implements SwiftGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCallFunction(SwiftGrammarParser.CallFunctionContext ctx) { }
+	@Override public void enterExprComa(SwiftGrammarParser.ExprComaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCallFunction(SwiftGrammarParser.CallFunctionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterListParamsCall(SwiftGrammarParser.ListParamsCallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitListParamsCall(SwiftGrammarParser.ListParamsCallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterListStructExp(SwiftGrammarParser.ListStructExpContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitListStructExp(SwiftGrammarParser.ListStructExpContext ctx) { }
+	@Override public void exitExprComa(SwiftGrammarParser.ExprComaContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

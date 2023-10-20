@@ -58,6 +58,10 @@ func (p Primitive) Ejecutar(ast *environment.AST, env interface{}, gen *generato
 		result = environment.NewValue("", false, environment.BOOLEAN)
 		result.TrueLabel = append(result.TrueLabel, trueLabel)
 		result.FalseLabel = append(result.FalseLabel, falseLabel)
+	} else if p.Tipo == environment.NIL {
+		gen.AddPrintf("c", "78")
+		gen.AddPrintf("c", "73")
+		gen.AddPrintf("c", "76")
 	}
 	return result
 }

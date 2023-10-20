@@ -4,6 +4,8 @@ import (
 	"Server2/environment"
 	"Server2/generator"
 	"Server2/interfaces"
+	"fmt"
+	"strconv"
 )
 
 type Operation struct {
@@ -44,18 +46,38 @@ func (o Operation) Ejecutar(ast *environment.AST, env interface{}, gen *generato
 		{
 			op1 = o.Op_izq.Ejecutar(ast, env, gen)
 			op2 = o.Op_der.Ejecutar(ast, env, gen)
-			//validar tipo dominante
 			dominante = tabla_dominante[op1.Type][op2.Type]
-			//valida el tipo
 			if dominante == environment.INTEGER || dominante == environment.FLOAT {
 				gen.AddExpression(newTemp, op1.Value, op2.Value, "+")
 				result = environment.NewValue(newTemp, true, dominante)
 				result.IntValue = op1.IntValue + op2.IntValue
 				return result
+			} else if dominante == environment.STRING {
+				//llamar a generar concatstring
+				gen.GenerateConcatString()
+				//concat
+				gen.AddComment("Concatenando strings")
+				envSize := strconv.Itoa(env.(environment.Environment).Size["size"])
+				tmp1 := gen.NewTemp()
+				tmp2 := gen.NewTemp()
+				gen.AddExpression(tmp1, "P", envSize, "+")
+				gen.AddExpression(tmp1, tmp1, "1", "+")
+				gen.AddSetStack("(int)"+tmp1, op1.Value)
+				gen.AddExpression(tmp1, tmp1, "1", "+")
+				gen.AddSetStack("(int)"+tmp1, op2.Value)
+				gen.AddExpression("P", "P", envSize, "+")
+				gen.AddCall("dbrust_concatString")
+				gen.AddGetStack(tmp2, "(int)P")
+				gen.AddExpression("P", "P", envSize, "-")
+				gen.AddBr()
+				result = environment.NewValue(tmp2, true, dominante)
+				return result
 			} else {
-				ast.SetError(" No es posible sumar", o.Lin, o.Col)
+				fmt.Println("ERROR: No es posible sumar ", dominante)
+				return result
 			}
 		}
+
 	case "-":
 		{
 			op1 = o.Op_izq.Ejecutar(ast, env, gen)
@@ -115,6 +137,20 @@ func (o Operation) Ejecutar(ast *environment.AST, env interface{}, gen *generato
 				ast.SetError(" No es posible Dividir", o.Lin, o.Col)
 			}
 
+		}
+	case "%":
+		{
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+			op2 = o.Op_der.Ejecutar(ast, env, gen)
+			dominante = tabla_dominante[op1.Type][op2.Type]
+
+			if dominante == environment.INTEGER || dominante == environment.FLOAT {
+				gen.AddExpression(newTemp, "fmod("+op1.Value, op2.Value+")", ",")
+				result = environment.NewValue(newTemp, true, dominante)
+				return result
+			} else {
+				ast.SetError(" No es posible hacer modulo", o.Lin, o.Col)
+			}
 		}
 	case "<":
 		{
@@ -284,6 +320,53 @@ func (o Operation) Ejecutar(ast *environment.AST, env interface{}, gen *generato
 				return result
 			} else {
 				ast.SetError(" No es posible realizar !", o.Lin, o.Col)
+			}
+		}
+	case "+=":
+		{
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+			op2 = o.Op_der.Ejecutar(ast, env, gen)
+			dominante = tabla_dominante[op1.Type][op2.Type]
+
+			if dominante == environment.INTEGER || dominante == environment.FLOAT {
+				gen.AddExpression(newTemp, op1.Value, op2.Value, "+")
+				result = environment.NewValue(newTemp, true, dominante)
+				result.IntValue = op1.IntValue + op2.IntValue
+				gen.AddAssign(op1.Value, result.Value) // Actualiza el valor de la variable izquierda
+				return result
+			} else {
+				ast.SetError("No es posible realizar '+=': tipos incompatibles", o.Lin, o.Col)
+			}
+		}
+	case "-=":
+		{
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+			op2 = o.Op_der.Ejecutar(ast, env, gen)
+			dominante = tabla_dominante[op1.Type][op2.Type]
+
+			if dominante == environment.INTEGER || dominante == environment.FLOAT {
+				gen.AddExpression(newTemp, op1.Value, op2.Value, "-")
+				result = environment.NewValue(newTemp, true, dominante)
+				result.IntValue = op1.IntValue - op2.IntValue
+				gen.AddAssign(op1.Value, result.Value) // Actualiza el valor de la variable izquierda
+				return result
+			} else {
+				ast.SetError("No es posible realizar '-=': tipos incompatibles", o.Lin, o.Col)
+			}
+		}
+	case "NEGACION":
+		{
+			op1 = o.Op_izq.Ejecutar(ast, env, gen)
+			if op1.Type == environment.INTEGER {
+				gen.AddExpression(newTemp, "0", op1.Value, "-")
+				result = environment.NewValue(newTemp, true, environment.INTEGER)
+				return result
+			} else if op1.Type == environment.FLOAT {
+				gen.AddExpression(newTemp, "0", op1.Value, "-")
+				result = environment.NewValue(newTemp, true, environment.FLOAT)
+				return result
+			} else {
+				ast.SetError(" No es posible realizar la negación", o.Lin, o.Col)
 			}
 		}
 	}

@@ -26,7 +26,16 @@ func (p Declaration) Ejecutar(ast *environment.AST, env interface{}, gen *genera
 	var newVar environment.Symbol
 	result = p.Expresion.Ejecutar(ast, env, gen)
 	gen.AddComment("Agregando una declaracion")
-	newVar = env.(environment.Environment).SaveVariable(p.Id, p.Tipo)
+	if p.Expresion == nil {
+		// Asignar el valor nil al símbolo en el entorno
+		newVar = env.(environment.Environment).SaveVariable(p.Id, environment.NIL)
+	} else if p.Tipo == environment.ARRAY {
+		newVar = env.(environment.Environment).SaveVariable(p.Id, result.Type)
+	} else if p.Tipo == environment.UNKNOWN {
+		newVar = env.(environment.Environment).SaveVariable(p.Id, result.Type)
+	} else {
+		newVar = env.(environment.Environment).SaveVariable(p.Id, p.Tipo)
+	}
 
 	if result.Type == environment.BOOLEAN {
 		//si no es temp (boolean)
