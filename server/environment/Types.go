@@ -12,5 +12,5 @@ const (
 	RANGE                        //6
 	STR                          //7
 	UNKNOWN                      //8
-	STRUCT
+	STRUCT                       //9
 )

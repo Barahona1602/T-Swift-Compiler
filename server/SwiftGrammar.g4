@@ -80,7 +80,7 @@ declarationstmt returns [interfaces.Instruction dec]
 assignstmt returns [interfaces.Instruction asg]
 : ID op=IG expr { $asg = instructions.NewAssignment($ID.line, $ID.pos, $ID.text, $expr.e) }
 // | listAccessStruct IG expr { $asg = instructions.NewStructAssign($listAccessStruct.start.GetLine(),$listAccessStruct.start.GetColumn(), $listAccessStruct.l, $expr.e) }
-// | ID op=(SUB_IG | SUM_IG) expr { $asg = instructions.NewImplicitAssignment($ID.line, $ID.pos, $ID.text, $op.text, $expr.e); }
+| ID op=(SUB_IG | SUM_IG) expr { $asg = instructions.NewImplicitAssignment($ID.line, $ID.pos, $ID.text, $op.text, $expr.e); }
 // | ID listAccessArray IG expr { $asg = instructions.NewArrayAssign($ID.line, $ID.pos, $ID.text, $listAccessArray.l, $expr.e) }
 ;
 

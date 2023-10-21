@@ -5,29 +5,31 @@ import (
 )
 
 type Generator struct {
-	Temporal         int
-	Label            int
-	Code             []interface{}
-	FinalCode        []interface{}
-	Natives          []interface{}
-	FuncCode         []interface{}
-	TempList         []interface{}
-	PrintStringFlag  bool
-	ConcatStringFlag bool
-	BreakLabel       string
-	ContinueLabel    string
-	MainCode         bool
+	Temporal                int
+	Label                   int
+	Code                    []interface{}
+	FinalCode               []interface{}
+	Natives                 []interface{}
+	FuncCode                []interface{}
+	TempList                []interface{}
+	PrintStringFlag         bool
+	ConcatStringFlag        bool
+	ConcatStringWithIntFlag bool
+	BreakLabel              string
+	ContinueLabel           string
+	MainCode                bool
 }
 
 func NewGenerator() Generator {
 	generator := Generator{
-		Temporal:         0,
-		Label:            0,
-		BreakLabel:       "",
-		ContinueLabel:    "",
-		PrintStringFlag:  true,
-		ConcatStringFlag: true,
-		MainCode:         false,
+		Temporal:                0,
+		Label:                   0,
+		BreakLabel:              "",
+		ContinueLabel:           "",
+		PrintStringFlag:         true,
+		ConcatStringFlag:        true,
+		ConcatStringWithIntFlag: true,
+		MainCode:                false,
 	}
 	return generator
 }
