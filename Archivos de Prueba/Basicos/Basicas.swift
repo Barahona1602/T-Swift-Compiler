@@ -16,8 +16,8 @@ print(val2)
 print(val3)
 print(val3)
 print(bol)
-print(cad1)
-print(cad2)
+print("El valor de cad1 es:", cad1)
+print("El valor de cad2 es:", cad2)
 print(bol2)
 
 var a = 100
@@ -61,7 +61,9 @@ var x1 = 15
 if x1 % 2 == 0 {
     print(">>>>> numeroPar ingreso a if verdadero,", x1, "es par")
 } else {
-    print(">>>>> numeroPar ingreso a if falso,", x1, "no es par")
+    print(">>>>> numeroPar ingreso a if falso,")
+    print(x1)
+    print("no es par")
 }
 
 /*

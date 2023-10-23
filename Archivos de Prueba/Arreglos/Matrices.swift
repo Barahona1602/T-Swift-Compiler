@@ -2,12 +2,12 @@ func printArrayStr(_ arr: [String]) {
     var out = "["
     for i in 0...4 {
         if i == (4) {
-            out += arr[i]
+            out = out + arr[i]
         } else {
-            out += arr[i] + ", "
+            out = out + arr[i] + ", "
         }
     }
-    out += "]"
+    out = out + "]"
     print(out)
 }
 
@@ -15,12 +15,12 @@ func printArrayInt(_ arr: [Int]) {
     var out = "["
     for i in 0...4 {
         if i == 4 {
-            out += String(arr[i])
+            out = out + String(arr[i])
         } else {
-            out += String(arr[i]) + ", "
+            out = out + String(arr[i]) + ", "
         }
     }
-    out += "]"
+    out = out + "]"
     print(out)
 }
 
@@ -55,7 +55,7 @@ func imprimirNotaFinal(_ ests: [String], _ cursos: [String], _ notas: [[[Int]]])
                     let parcial: Float = (43.0 / 3.0) / 100.0
                     nota = Float(notas[i][j][k]) * parcial
                 }
-                notaFinal += nota
+                notaFinal = notaFinal + nota
             }
             let cad = " -> Curso: "
             print(ests[i], cad, cursos[j])

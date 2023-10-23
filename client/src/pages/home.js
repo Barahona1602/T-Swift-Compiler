@@ -68,7 +68,7 @@ const Home = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <h1>T-Swift</h1>
+            <h1>T-Swift Compiler</h1>
             
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                 <div>
