@@ -43,7 +43,7 @@ instruction returns [interfaces.Instruction inst]
 | whilestmt { $inst = $whilestmt.whl }
 | assignstmt { $inst = $assignstmt.asg }
 | forstmt { $inst = $forstmt.fr }
-// | guardstmt { $inst = $guardstmt.grd }
+| guardstmt { $inst = $guardstmt.grd }
 | breakstmt { $inst = $breakstmt.brk }
 | continuestmt { $inst = $continuestmt.cnt }
 // | fnArray { $inst = $fnArray.p }
@@ -87,9 +87,9 @@ assignstmt returns [interfaces.Instruction asg]
 forstmt returns [interfaces.Instruction fr]
 : FOR ID IN expr LLAVEIZQ block LLAVEDER { $fr = instructions.NewForIn($FOR.line, $FOR.pos, $ID.text, $expr.e, $block.blk) };
 
-// guardstmt returns [interfaces.Instruction grd]
-// : GUARD expr ELSE LLAVEIZQ block LLAVEDER { $grd = instructions.NewGuard($GUARD.line, $GUARD.pos, $expr.e, $block.blk) }
-// ;
+guardstmt returns [interfaces.Instruction grd]
+: GUARD expr ELSE LLAVEIZQ block LLAVEDER { $grd = instructions.NewGuard($GUARD.line, $GUARD.pos, $expr.e, $block.blk) }
+;
 
 
 breakstmt returns [interfaces.Instruction brk]

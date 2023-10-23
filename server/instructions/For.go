@@ -27,7 +27,6 @@ func (p ForIn) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Ge
 	var result environment.Value
 	var OutLvls []interface{}
 	tmpArr := p.Exp.Ejecutar(ast, env, gen)
-	//forin
 	tmp1 := gen.NewTemp()
 	tmp2 := gen.NewTemp()
 	tmp3 := gen.NewTemp()
@@ -61,6 +60,7 @@ func (p ForIn) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Ge
 			if result.BreakFlag {
 				gen.AddGoto(gen.BreakLabel)
 				result.BreakFlag = false
+				fmt.Println("break flag")
 			}
 			if result.ContinueFlag {
 				gen.AddGoto(gen.ContinueLabel)

@@ -8,45 +8,52 @@ import (
 	"strings"
 )
 
-type While struct {
+type Guard struct {
 	Lin       int
 	Col       int
-	Expresion interfaces.Expression
+	Condition interfaces.Expression
 	Bloque    []interface{}
 }
 
-func NewWhile(lin int, col int, condition interfaces.Expression, bloque []interface{}) While {
-	Inst := While{lin, col, condition, bloque}
+func NewGuard(lin int, col int, condition interfaces.Expression, bloque []interface{}) Guard {
+	Inst := Guard{lin, col, condition, bloque}
 	return Inst
 }
 
-func (p While) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Generator) interface{} {
-	gen.AddComment("Generando While")
+func (p Guard) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Generator) interface{} {
+	gen.AddComment("Generando Guard")
 	var condicion, result environment.Value
 	RetLvl := gen.NewLabel() // Etiqueta de retorno
 	gen.AddLabel(RetLvl)
 
-	condicion = p.Expresion.Ejecutar(ast, env, gen)
+	// Etiquetas para controlar break y continue
+	ContinueLabel := gen.NewLabel()
+	BreakLabel := gen.NewLabel()
+	gen.AddContinue(ContinueLabel)
+	gen.AddBreak(BreakLabel)
 
-	gen.AddContinue(RetLvl)
-	gen.AddBreak(condicion.FalseLabel[0].(string))
+	condicion = p.Condition.Ejecutar(ast, env, gen)
+
 	// Agregar etiquetas TrueLabel como sea necesario
 	for _, lvl := range condicion.TrueLabel {
 		gen.AddLabel(lvl.(string))
 	}
 
-	// Instrucciones del bucle while
+	// Instrucciones del bucle guard
 	for _, s := range p.Bloque {
 		if strings.Contains(fmt.Sprintf("%T", s), "instructions") {
 			resInst := s.(interfaces.Instruction).Ejecutar(ast, env, gen)
 			if resInst != nil {
 				if value, ok := resInst.(environment.Value); ok {
+					// Manejar Break y Continue
 					if value.BreakFlag {
-						result.BreakFlag = false
+						gen.AddGoto(BreakLabel)
 					}
 					if value.ContinueFlag {
-						result.ContinueFlag = false
+						gen.AddGoto(ContinueLabel)
 					}
+
+					// Agregar etiquetas de salida si es necesario
 					for _, lvl := range value.OutLabel {
 						gen.AddLabel(lvl.(string))
 					}
@@ -60,12 +67,14 @@ func (p While) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Ge
 			resInst := s.(interfaces.Instruction).Ejecutar(ast, env, gen)
 			if resInst != nil {
 				if value, ok := resInst.(environment.Value); ok {
+					// Manejar Break y Continue
 					if value.BreakFlag {
-						result.BreakFlag = false
+						gen.AddGoto(BreakLabel)
 					}
 					if value.ContinueFlag {
-						result.ContinueFlag = false
+						gen.AddGoto(ContinueLabel)
 					}
+
 					// Agregar etiquetas de salida si es necesario
 					for _, lvl := range value.OutLabel {
 						gen.AddLabel(lvl.(string))
@@ -81,12 +90,13 @@ func (p While) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Ge
 		}
 	}
 
-	//retorno
+	// Retorno
 	gen.AddGoto(RetLvl)
-	//add false labels
+
+	// Agregar false labels
 	for _, lvl := range condicion.FalseLabel {
 		gen.AddLabel(lvl.(string))
 	}
-	return result
 
+	return result
 }
