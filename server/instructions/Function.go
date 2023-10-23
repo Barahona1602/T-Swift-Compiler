@@ -34,7 +34,7 @@ func (p Function) Ejecutar(ast *environment.AST, env interface{}, gen *generator
 	//variables
 	for _, s := range p.ListDec {
 		res := s.(interfaces.Instruction).Ejecutar(ast, env, gen)
-		envFunc.SaveVariable(res.(environment.Value).Value, res.(environment.Value).Type)
+		envFunc.SaveVariable(res.(environment.Value).Value, res.(environment.Value).Type, res.(environment.Value).ArrType)
 	}
 	//instrucciones func
 	for _, s := range p.Bloque {

@@ -13,7 +13,7 @@ type If struct {
 	Col        int
 	Expresion  interfaces.Expression
 	Bloque     []interface{}
-	ElseBloque []interface{} // Agregamos un campo para el bloque "else"
+	ElseBloque []interface{}
 }
 
 func NewIf(lin int, col int, condition interfaces.Expression, bloque []interface{}, elseBloque []interface{}) If {
@@ -39,6 +39,7 @@ func (p If) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Gener
 				//agregando etiquetas de salida
 				for _, lvl := range resInst.(environment.Value).OutLabel {
 					OutLvls = append(OutLvls, lvl)
+					fmt.Println("Agregando etiqueta de salida: ", lvl)
 				}
 			}
 		} else {

@@ -101,6 +101,14 @@ func (g *Generator) AddGoto(Label string) {
 	}
 }
 
+func (g *Generator) AddFalseGoto(Label string, condition string) {
+	if g.MainCode {
+		g.Code = append(g.Code, "if (!"+condition+") goto "+Label+";\n")
+	} else {
+		g.FuncCode = append(g.FuncCode, "if (!"+condition+") goto "+Label+";\n")
+	}
+}
+
 func (g *Generator) AddExpression(target string, left string, right string, operator string) {
 	if g.MainCode {
 		g.Code = append(g.Code, target+" = "+left+" "+operator+" "+right+";\n")

@@ -40,12 +40,12 @@ instruction returns [interfaces.Instruction inst]
 : printstmt { $inst = $printstmt.prnt}
 | ifstmt { $inst = $ifstmt.ifinst }
 | declarationstmt { $inst = $declarationstmt.dec }
-// | whilestmt { $inst = $whilestmt.whl }
+| whilestmt { $inst = $whilestmt.whl }
 | assignstmt { $inst = $assignstmt.asg }
-// | forstmt { $inst = $forstmt.fr }
+| forstmt { $inst = $forstmt.fr }
 // | guardstmt { $inst = $guardstmt.grd }
-// | breakstmt { $inst = $breakstmt.brk }
-// | continuestmt { $inst = $continuestmt.cnt }
+| breakstmt { $inst = $breakstmt.brk }
+| continuestmt { $inst = $continuestmt.cnt }
 // | fnArray { $inst = $fnArray.p }
 // | structCreation { $inst = $structCreation.dec }
 // | returnstmt { $inst = $returnstmt.ret }
@@ -64,9 +64,9 @@ ifstmt returns [interfaces.Instruction ifinst]
     | IF expr LLAVEIZQ block LLAVEDER ELSE ifstmt { $ifinst = instructions.NewIf($IF.line, $IF.pos, $expr.e, $block.blk, []interface{}{$ifstmt.ifinst}) }
 ;
 
-// whilestmt returns [interfaces.Instruction whl]
-//     : WHILE expr LLAVEIZQ block LLAVEDER { $whl = instructions.NewWhile($WHILE.line, $WHILE.pos, $expr.e, $block.blk) }
-// ;
+whilestmt returns [interfaces.Instruction whl]
+    : WHILE expr LLAVEIZQ block LLAVEDER { $whl = instructions.NewWhile($WHILE.line, $WHILE.pos, $expr.e, $block.blk) }
+;
 
 declarationstmt returns [interfaces.Instruction dec]
 : VAR ID D_PTS types IG expr  { $dec = instructions.NewDeclaration($VAR.line, $VAR.pos, $ID.text, $types.ty, $expr.e, true) }
@@ -84,23 +84,21 @@ assignstmt returns [interfaces.Instruction asg]
 // | ID listAccessArray IG expr { $asg = instructions.NewArrayAssign($ID.line, $ID.pos, $ID.text, $listAccessArray.l, $expr.e) }
 ;
 
-// forstmt returns [interfaces.Instruction fr]
-// : FOR ID IN exp1=expr PUNTO PUNTO PUNTO exp2=expr LLAVEIZQ block LLAVEDER { $fr = instructions.NewForIn($FOR.line, $FOR.pos, $ID.text, $exp1.e, $exp2.e, $block.blk); }
-// | FOR ID IN expr LLAVEIZQ block LLAVEDER { $fr = instructions.NewFor($FOR.line, $FOR.pos, $ID.text, $expr.e, $block.blk); }
-// ;
+forstmt returns [interfaces.Instruction fr]
+: FOR ID IN expr LLAVEIZQ block LLAVEDER { $fr = instructions.NewForIn($FOR.line, $FOR.pos, $ID.text, $expr.e, $block.blk) };
 
 // guardstmt returns [interfaces.Instruction grd]
 // : GUARD expr ELSE LLAVEIZQ block LLAVEDER { $grd = instructions.NewGuard($GUARD.line, $GUARD.pos, $expr.e, $block.blk) }
 // ;
 
 
-// breakstmt returns [interfaces.Instruction brk]
-// : BREAK { $brk = instructions.NewBreak($BREAK.line, $BREAK.pos) }
-// ;
+breakstmt returns [interfaces.Instruction brk]
+: BREAK { $brk = instructions.NewBreak($BREAK.line, $BREAK.pos, nil) }
+;
 
-// continuestmt returns [interfaces.Instruction cnt]
-// : CONTINUE { $cnt = instructions.NewContinue($CONTINUE.line, $CONTINUE.pos) }
-// ;
+continuestmt returns [interfaces.Instruction cnt]
+: CONTINUE { $cnt = instructions.NewContinue($CONTINUE.line, $CONTINUE.pos) }
+;
 
 // returnstmt returns [interfaces.Instruction ret]
 // : RETURN expr { $ret = instructions.NewReturn($RETURN.line, $RETURN.pos, $expr.e) }
@@ -244,6 +242,7 @@ types returns[environment.TipoExpresion ty]
 
 expr returns [interfaces.Expression e]
 : SUB opDe=expr {$e = expressions.NewOperation($SUB.line,$SUB.pos,$opDe.e,"NEGACION",nil)}
+| expuno=expr PUNTO PUNTO PUNTO expdos=expr { $e = expressions.NewRange($expuno.start.GetLine(),$expuno.start.GetColumn(), $expuno.e, $expdos.e) }
 | left=expr op=(SUB_IG|SUM_IG) expr { $e = expressions.NewOperation($op.line, $op.pos, nil, $op.text, $expr.e) }
 | left=expr op=(MUL|DIV|MOD) right=expr { $e = expressions.NewOperation($left.start.GetLine(), $left.start.GetColumn(), $left.e, $op.text, $right.e) }
 | left=expr op=(ADD|SUB) right=expr { $e = expressions.NewOperation($left.start.GetLine(), $left.start.GetColumn(), $left.e, $op.text, $right.e) }

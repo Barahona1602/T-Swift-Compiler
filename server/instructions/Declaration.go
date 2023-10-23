@@ -28,13 +28,13 @@ func (p Declaration) Ejecutar(ast *environment.AST, env interface{}, gen *genera
 	gen.AddComment("Agregando una declaracion")
 	if p.Expresion == nil {
 		// Asignar el valor nil al símbolo en el entorno
-		newVar = env.(environment.Environment).SaveVariable(p.Id, environment.NIL)
+		newVar = env.(environment.Environment).SaveVariable(p.Id, environment.NIL, result.ArrType)
 	} else if p.Tipo == environment.ARRAY {
-		newVar = env.(environment.Environment).SaveVariable(p.Id, result.Type)
+		newVar = env.(environment.Environment).SaveVariable(p.Id, result.Type, result.ArrType)
 	} else if p.Tipo == environment.UNKNOWN {
-		newVar = env.(environment.Environment).SaveVariable(p.Id, result.Type)
+		newVar = env.(environment.Environment).SaveVariable(p.Id, result.Type, result.ArrType)
 	} else {
-		newVar = env.(environment.Environment).SaveVariable(p.Id, p.Tipo)
+		newVar = env.(environment.Environment).SaveVariable(p.Id, p.Tipo, result.ArrType)
 	}
 
 	if result.Type == environment.BOOLEAN {

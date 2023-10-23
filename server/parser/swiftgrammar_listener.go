@@ -22,11 +22,23 @@ type SwiftGrammarListener interface {
 	// EnterIfstmt is called when entering the ifstmt production.
 	EnterIfstmt(c *IfstmtContext)
 
+	// EnterWhilestmt is called when entering the whilestmt production.
+	EnterWhilestmt(c *WhilestmtContext)
+
 	// EnterDeclarationstmt is called when entering the declarationstmt production.
 	EnterDeclarationstmt(c *DeclarationstmtContext)
 
 	// EnterAssignstmt is called when entering the assignstmt production.
 	EnterAssignstmt(c *AssignstmtContext)
+
+	// EnterForstmt is called when entering the forstmt production.
+	EnterForstmt(c *ForstmtContext)
+
+	// EnterBreakstmt is called when entering the breakstmt production.
+	EnterBreakstmt(c *BreakstmtContext)
+
+	// EnterContinuestmt is called when entering the continuestmt production.
+	EnterContinuestmt(c *ContinuestmtContext)
 
 	// EnterFnstmt is called when entering the fnstmt production.
 	EnterFnstmt(c *FnstmtContext)
@@ -79,11 +91,23 @@ type SwiftGrammarListener interface {
 	// ExitIfstmt is called when exiting the ifstmt production.
 	ExitIfstmt(c *IfstmtContext)
 
+	// ExitWhilestmt is called when exiting the whilestmt production.
+	ExitWhilestmt(c *WhilestmtContext)
+
 	// ExitDeclarationstmt is called when exiting the declarationstmt production.
 	ExitDeclarationstmt(c *DeclarationstmtContext)
 
 	// ExitAssignstmt is called when exiting the assignstmt production.
 	ExitAssignstmt(c *AssignstmtContext)
+
+	// ExitForstmt is called when exiting the forstmt production.
+	ExitForstmt(c *ForstmtContext)
+
+	// ExitBreakstmt is called when exiting the breakstmt production.
+	ExitBreakstmt(c *BreakstmtContext)
+
+	// ExitContinuestmt is called when exiting the continuestmt production.
+	ExitContinuestmt(c *ContinuestmtContext)
 
 	// ExitFnstmt is called when exiting the fnstmt production.
 	ExitFnstmt(c *FnstmtContext)

@@ -5,6 +5,7 @@ type Symbol struct {
 	Col          int
 	Id           string
 	Tipo         TipoExpresion
+	TipoArr      TipoExpresion
 	Valor        interface{}
 	Mutable      bool
 	Externo      string

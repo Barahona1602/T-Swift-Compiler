@@ -23,12 +23,12 @@ func NewEnvironment(ant interface{}, id string) Environment {
 	return env
 }
 
-func (env Environment) SaveVariable(id string, tipo TipoExpresion) Symbol {
+func (env Environment) SaveVariable(id string, tipo TipoExpresion, tipoarr TipoExpresion) Symbol {
 	if variable, ok := env.Tabla[id]; ok {
 		fmt.Println("La variable "+id+" ya existe ", variable)
 		return env.Tabla[id]
 	}
-	env.Tabla[id] = Symbol{Lin: 0, Col: 0, Tipo: tipo, Posicion: env.Size["size"]}
+	env.Tabla[id] = Symbol{Lin: 0, Col: 0, Id: id, Tipo: tipo, Posicion: env.Size["size"], TipoArr: tipoarr}
 	env.Size["size"] = env.Size["size"] + 1
 	return env.Tabla[id]
 }
