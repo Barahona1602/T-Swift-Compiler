@@ -1,35 +1,58 @@
 print("--------------------------")
 print("---FUNCIONES EMBEBIDAS----")
+print("----------14 pts----------")
 print("--------------------------")
 
 print("")
-let num1 = Int("20")
-let num2 = Int("20")
-let suma = String(num1 + num2)
-let num3 = Float("9.5")
-let num4 = Float("3.6")
-let resta = String(num3 - num4)
-let cadena = String(true) + "->" + String(3.504)
+func suma(_ numero1: Int, _ numero2: Int) -> Int {
+    let resultado = numero1 + numero2
+    print("La suma es: ")
+    print(resultado)
+}
 
-print("valor 1: ", suma)
-print("valor 2: ", resta)
-print("valor true: ", String(true))
-print("valor false: ", String(false))
-print("valor nulo: ", nil)
-print(String(10) + String(3.5))
-print("valor cadena: ", cadena)
+suma(3,5)
+
+print("")
+func saludo3() {
+    print("saludos!")
+}
+
+func saludo2() {
+    print("mundo")
+    saludo3()
+}
+
+func saludo1() {
+    print("hola")
+    saludo2()
+}
+
+saludo1()
+
+print("")
+func ejemplo2(verdura v: Int, v verdura: Int ) {
+    print(v)
+    print(verdura)
+}
+
+let precio1: Int = 251
+let precio2: Int = 85
+ejemplo2(precio1,precio2)
+
+
 
 /*
 --------------------------
 ---FUNCIONES EMBEBIDAS----
+----------14 pts----------
 --------------------------
 
-valor 1:  40
-valor 2:  5.9
-valor true:  true
-valor false:  false
-valor nulo: nil
-103.5
-true
-valor cadena: true->3.504
+La suma es:  8
+
+hola
+mundo
+saludos!
+
+251
+85
 */

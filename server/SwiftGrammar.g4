@@ -281,7 +281,7 @@ expr returns [interfaces.Expression e]
     }
 | TRU { $e = expressions.NewPrimitive($TRU.line, $TRU.pos, true, environment.BOOLEAN) }
 | FAL { $e = expressions.NewPrimitive($FAL.line, $FAL.pos, false, environment.BOOLEAN) }
-// | ID PUNTO COUNT { $e = expressions.NewCount($ID.line, $ID.pos, $ID.text) }
+| ID PUNTO COUNT { $e = expressions.NewCount($ID.line, $ID.pos, $ID.text) }
 // | ID PUNTO ISEMPTY { $e = expressions.NewIsEmpty($ID.line, $ID.pos, $ID.text) }
 | NIL { $e = expressions.NewPrimitive($NIL.line, $NIL.pos, "nil", environment.NIL) }
 ;
@@ -313,7 +313,7 @@ listAccessArray returns[[]interface{} l]
 
 listArray returns[interfaces.Expression p]
 : list = listArray CORIZQ expr CORDER { $p = expressions.NewArrayAccess($list.start.GetLine(), $list.start.GetColumn(), $list.p, $expr.e) }
-| list = listArray PUNTO ID { $p = expressions.NewStructAccess($list.start.GetLine(), $list.start.GetColumn(), $list.p, $ID.text)  }
+// | list = listArray PUNTO ID { $p = expressions.NewStructAccess($list.start.GetLine(), $list.start.GetColumn(), $list.p, $ID.text)  }
 | list = listArray types IG CORIZQ expr CORDER { $p = expressions.NewArrayAccess($list.start.GetLine(), $list.start.GetColumn(), $list.p, $expr.e) }
 | ID { $p = expressions.NewCallVar($ID.line, $ID.pos, $ID.text)}
 ;
