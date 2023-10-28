@@ -53,8 +53,6 @@ func (p While) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Ge
 				} else {
 					fmt.Println("resInst no se puede convertir a environment.Value")
 				}
-			} else {
-				fmt.Println("resInst es nulo")
 			}
 		} else if strings.Contains(fmt.Sprintf("%T", s), "expressions") {
 			resInst := s.(interfaces.Instruction).Ejecutar(ast, env, gen)

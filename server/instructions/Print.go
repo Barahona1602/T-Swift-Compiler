@@ -67,6 +67,14 @@ func (p Print) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Ge
 		gen.AddExpression("P", "P", size, "-")          //regreso del entorno
 		gen.AddPrintf("c", "10")                        //salto de linea
 		gen.AddBr()
+	} else if result.Type == environment.NIL {
+		nilString := "nil"
+		for _, char := range nilString {
+			gen.AddPrintf("c", fmt.Sprintf("(char)%d", char))
+		}
+		gen.AddPrintf("c", "10")
+		gen.AddBr()
 	}
+
 	return nil
 }

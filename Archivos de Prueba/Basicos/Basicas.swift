@@ -47,7 +47,8 @@ print((valorVerdadero == (50 + 50 + (val - val))) && (!(!true)))
 var x1 = 15
 print(x1 % 2 == 0)
 
-print("valor nulo: ", nil)
+print("valor nulo: ")
+print(nil)
 
 /*
 ----------------------
@@ -66,4 +67,6 @@ false
 true
 true
 false
+valor nulo:
+nil
 */

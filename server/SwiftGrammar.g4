@@ -47,7 +47,7 @@ instruction returns [interfaces.Instruction inst]
 | breakstmt { $inst = $breakstmt.brk }
 | continuestmt { $inst = $continuestmt.cnt }
 // | fnArray { $inst = $fnArray.p }
-// | structCreation { $inst = $structCreation.dec }
+| structCreation { $inst = $structCreation.dec }
 // | returnstmt { $inst = $returnstmt.ret }
 | fnstmt { $inst = $fnstmt.fn }
 | callFunction { $inst = $callFunction.cf }
@@ -110,43 +110,43 @@ continuestmt returns [interfaces.Instruction cnt]
 // | ID PUNTO REMOVELAST PARIZQ PARDER { $p = instructions.NewRemoveLast($ID.line, $ID.pos, $ID.text) }
 // ;
 
-// structCreation returns[interfaces.Instruction dec]
-// : STRUCT ID LLAVEIZQ listStructDec LLAVEDER { $dec = instructions.NewStruct($STRUCT.line, $STRUCT.pos, $ID.text, $listStructDec.l) }
-// ;
+structCreation returns[interfaces.Instruction dec]
+: STRUCT ID LLAVEIZQ listStructDec LLAVEDER { $dec = instructions.NewStruct($STRUCT.line, $STRUCT.pos, $ID.text, $listStructDec.l) }
+;
 
-// listStructDec returns[[]interface{} l]
-// : list=listStructDec (COMA)? (VAR|LET) ID D_PTS types {
-//                                                 var arr []interface{}
-//                                                 newParams := environment.NewStructType($ID.text, $types.ty, "")
-//                                                 arr = append($list.l, newParams)
-//                                                 $l = arr
-//                                             }
-// | list=listStructDec (COMA)? (VAR|LET) id1=ID D_PTS id2=ID {
-//                                                 var arr []interface{}
-//                                                 newParams := environment.NewStructType($id1.text, environment.UNKNOWN, $id2.text)
-//                                                 arr = append($list.l, newParams)
-//                                                 $l = arr
-//                                             } 
-// | list=listStructDec (COMA)? (VAR|LET) id1=ID (D_PTS types)? IG expr {
-//                                                 var arr []interface{}
-//                                                 newParams := environment.NewStructType($id1.text, $types.ty, "")
-//                                                 arr = append($list.l, newParams)
-//                                                 $l = arr
-//                                             }
-// | (VAR|LET) ID D_PTS types {
-//                         var arr []interface{}
-//                         newParams := environment.NewStructType($ID.text, $types.ty, "")
-//                         arr = append(arr, newParams)
-//                         $l = arr
-//                     }
-// | (VAR|LET) id1=ID D_PTS id2=ID {
-//                                                 var arr []interface{}
-//                                                 newParams := environment.NewStructType($id1.text,environment.UNKNOWN , $id2.text)
-//                                                 arr = append($list.l, newParams)
-//                                                 $l = arr
-//                                             } 
-// |  { $l = []interface{}{} }
-// ;
+listStructDec returns[[]interface{} l]
+: list=listStructDec (COMA)? (VAR|LET) ID D_PTS types {
+                                                var arr []interface{}
+                                                newParams := environment.NewStructType($ID.text, $types.ty, "")
+                                                arr = append($list.l, newParams)
+                                                $l = arr
+                                            }
+| list=listStructDec (COMA)? (VAR|LET) id1=ID D_PTS id2=ID {
+                                                var arr []interface{}
+                                                newParams := environment.NewStructType($id1.text, environment.UNKNOWN, $id2.text)
+                                                arr = append($list.l, newParams)
+                                                $l = arr
+                                            } 
+| list=listStructDec (COMA)? (VAR|LET) id1=ID (D_PTS types)? IG expr {
+                                                var arr []interface{}
+                                                newParams := environment.NewStructType($id1.text, $types.ty, "")
+                                                arr = append($list.l, newParams)
+                                                $l = arr
+                                            }
+| (VAR|LET) ID D_PTS types {
+                        var arr []interface{}
+                        newParams := environment.NewStructType($ID.text, $types.ty, "")
+                        arr = append(arr, newParams)
+                        $l = arr
+                    }
+| (VAR|LET) id1=ID D_PTS id2=ID {
+                                                var arr []interface{}
+                                                newParams := environment.NewStructType($id1.text,environment.UNKNOWN , $id2.text)
+                                                arr = append($list.l, newParams)
+                                                $l = arr
+                                            } 
+|  { $l = []interface{}{} }
+;
 
 // listStructExp returns[[]interface{} l]
 // : list=listStructExp COMA ID D_PTS expr {

@@ -43,6 +43,12 @@ type SwiftGrammarListener interface {
 	// EnterContinuestmt is called when entering the continuestmt production.
 	EnterContinuestmt(c *ContinuestmtContext)
 
+	// EnterStructCreation is called when entering the structCreation production.
+	EnterStructCreation(c *StructCreationContext)
+
+	// EnterListStructDec is called when entering the listStructDec production.
+	EnterListStructDec(c *ListStructDecContext)
+
 	// EnterFnstmt is called when entering the fnstmt production.
 	EnterFnstmt(c *FnstmtContext)
 
@@ -114,6 +120,12 @@ type SwiftGrammarListener interface {
 
 	// ExitContinuestmt is called when exiting the continuestmt production.
 	ExitContinuestmt(c *ContinuestmtContext)
+
+	// ExitStructCreation is called when exiting the structCreation production.
+	ExitStructCreation(c *StructCreationContext)
+
+	// ExitListStructDec is called when exiting the listStructDec production.
+	ExitListStructDec(c *ListStructDecContext)
 
 	// ExitFnstmt is called when exiting the fnstmt production.
 	ExitFnstmt(c *FnstmtContext)

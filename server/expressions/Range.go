@@ -4,7 +4,6 @@ import (
 	"Server2/environment"
 	"Server2/generator"
 	"Server2/interfaces"
-	"fmt"
 	"strconv"
 )
 
@@ -34,7 +33,6 @@ func (p Range) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Ge
 		size := s2 - s1 + 1
 		// Creando lista
 		for i := s1; i <= s2; i++ {
-			fmt.Println("asdsad", s1, i, s2)
 			res := environment.NewValue(strconv.Itoa(i), false, environment.INTEGER, false, false, false)
 			tmpList = append(tmpList, res)
 		}

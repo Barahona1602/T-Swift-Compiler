@@ -54,13 +54,11 @@ func (p ForIn) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Ge
 					OutLvls = append(OutLvls, result.OutLabel...)
 
 				}
-				fmt.Println("tipo de dato de resInst", resInst)
 			}
 
 			if result.BreakFlag {
 				gen.AddGoto(gen.BreakLabel)
 				result.BreakFlag = false
-				fmt.Println("break flag")
 			}
 			if result.ContinueFlag {
 				gen.AddGoto(gen.ContinueLabel)

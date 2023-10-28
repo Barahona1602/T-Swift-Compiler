@@ -39,7 +39,6 @@ func (p If) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Gener
 				//agregando etiquetas de salida
 				for _, lvl := range resInst.(environment.Value).OutLabel {
 					OutLvls = append(OutLvls, lvl)
-					fmt.Println("Agregando etiqueta de salida: ", lvl)
 				}
 			}
 		} else {

@@ -64,6 +64,16 @@ public interface SwiftGrammarListener extends ParseTreeListener {
 	 */
 	void exitIfstmt(SwiftGrammarParser.IfstmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#whilestmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhilestmt(SwiftGrammarParser.WhilestmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#whilestmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhilestmt(SwiftGrammarParser.WhilestmtContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SwiftGrammarParser#declarationstmt}.
 	 * @param ctx the parse tree
 	 */
@@ -83,6 +93,46 @@ public interface SwiftGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAssignstmt(SwiftGrammarParser.AssignstmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#forstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterForstmt(SwiftGrammarParser.ForstmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#forstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitForstmt(SwiftGrammarParser.ForstmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#guardstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterGuardstmt(SwiftGrammarParser.GuardstmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#guardstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitGuardstmt(SwiftGrammarParser.GuardstmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#breakstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterBreakstmt(SwiftGrammarParser.BreakstmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#breakstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitBreakstmt(SwiftGrammarParser.BreakstmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#continuestmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterContinuestmt(SwiftGrammarParser.ContinuestmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#continuestmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitContinuestmt(SwiftGrammarParser.ContinuestmtContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SwiftGrammarParser#fnstmt}.
 	 * @param ctx the parse tree
