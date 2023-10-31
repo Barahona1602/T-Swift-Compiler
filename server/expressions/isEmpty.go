@@ -24,7 +24,7 @@ func (p IsEmpty) Ejecutar(ast *environment.AST, env interface{}, gen *generator.
 	gen.AddAssign(zeroLabel, "0")
 	trueLabel := gen.NewLabel()
 	falseLabel := gen.NewLabel()
-	gen.AddIf(tempArray.Value, zeroLabel, "!=", trueLabel)
+	gen.AddIf(tempArray.Value, zeroLabel, "==", trueLabel)
 	gen.AddGoto(falseLabel)
 	result = environment.NewValue("", false, environment.BOOLEAN, false, false, false)
 	result.TrueLabel = append(result.TrueLabel, trueLabel)
