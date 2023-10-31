@@ -12,6 +12,7 @@ type Value struct {
 	BreakFlag    bool
 	ContinueFlag bool
 	IntValue     int
+	ArrSize      int
 }
 
 func NewValue(Val string, tmp bool, typ TipoExpresion, ret, br, cont bool) Value {

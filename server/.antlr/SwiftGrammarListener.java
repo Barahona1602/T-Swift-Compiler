@@ -134,6 +134,26 @@ public interface SwiftGrammarListener extends ParseTreeListener {
 	 */
 	void exitContinuestmt(SwiftGrammarParser.ContinuestmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#structCreation}.
+	 * @param ctx the parse tree
+	 */
+	void enterStructCreation(SwiftGrammarParser.StructCreationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#structCreation}.
+	 * @param ctx the parse tree
+	 */
+	void exitStructCreation(SwiftGrammarParser.StructCreationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#listStructDec}.
+	 * @param ctx the parse tree
+	 */
+	void enterListStructDec(SwiftGrammarParser.ListStructDecContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#listStructDec}.
+	 * @param ctx the parse tree
+	 */
+	void exitListStructDec(SwiftGrammarParser.ListStructDecContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SwiftGrammarParser#fnstmt}.
 	 * @param ctx the parse tree
 	 */
@@ -243,6 +263,16 @@ public interface SwiftGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitListArray(SwiftGrammarParser.ListArrayContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SwiftGrammarParser#count}.
+	 * @param ctx the parse tree
+	 */
+	void enterCount(SwiftGrammarParser.CountContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SwiftGrammarParser#count}.
+	 * @param ctx the parse tree
+	 */
+	void exitCount(SwiftGrammarParser.CountContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SwiftGrammarParser#exprComa}.
 	 * @param ctx the parse tree

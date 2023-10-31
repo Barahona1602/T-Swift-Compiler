@@ -53,6 +53,5 @@ func (p ArrayAccess) Ejecutar(ast *environment.AST, env interface{}, gen *genera
 	gen.AddGetHeap(newTmp2, "(int)"+newTmp)
 	gen.AddLabel(lvl3)
 	result = environment.NewValue(newTmp2, true, tempArray.ArrType, false, false, false)
-	result.ArrType = tempArray.ArrType
 	return result
 }

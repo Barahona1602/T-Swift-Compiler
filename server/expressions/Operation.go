@@ -4,6 +4,7 @@ import (
 	"Server2/environment"
 	"Server2/generator"
 	"Server2/interfaces"
+	"fmt"
 	"strconv"
 )
 
@@ -343,12 +344,7 @@ func (o Operation) Ejecutar(ast *environment.AST, env interface{}, gen *generato
 			op1 = o.Op_izq.Ejecutar(ast, env, gen)
 			op2 = o.Op_der.Ejecutar(ast, env, gen)
 			dominante = tabla_dominante[op1.Type][op2.Type]
-			if op1.Type == environment.INTEGER || dominante == environment.FLOAT {
-				gen.AddExpression(newTemp, op1.Value, op2.Value, "+")
-				result = environment.NewValue(newTemp, true, dominante, false, false, false)
-				result.IntValue = op1.IntValue + op2.IntValue
-				return result
-			} else if dominante == environment.STRING {
+			if dominante == environment.STRING {
 				//llamar a generar concatstring
 				gen.GenerateConcatString()
 				//concat
@@ -366,6 +362,7 @@ func (o Operation) Ejecutar(ast *environment.AST, env interface{}, gen *generato
 				gen.AddGetStack(tmp2, "(int)P")
 				gen.AddExpression("P", "P", envSize, "-")
 				gen.AddBr()
+				fmt.Println(op2.Value)
 				result = environment.NewValue(tmp2, true, dominante, false, false, false)
 				return result
 			} else {

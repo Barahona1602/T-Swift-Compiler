@@ -167,6 +167,30 @@ public class SwiftGrammarBaseListener implements SwiftGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterStructCreation(SwiftGrammarParser.StructCreationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStructCreation(SwiftGrammarParser.StructCreationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterListStructDec(SwiftGrammarParser.ListStructDecContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitListStructDec(SwiftGrammarParser.ListStructDecContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFnstmt(SwiftGrammarParser.FnstmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -294,6 +318,18 @@ public class SwiftGrammarBaseListener implements SwiftGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitListArray(SwiftGrammarParser.ListArrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCount(SwiftGrammarParser.CountContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCount(SwiftGrammarParser.CountContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

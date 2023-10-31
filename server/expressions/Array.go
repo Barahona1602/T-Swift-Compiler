@@ -22,6 +22,7 @@ func (p Array) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Ge
 	var result environment.Value
 	var val interfaces.Expression
 	var arrType environment.TipoExpresion
+	var arrVal = 0
 	size := len(p.ListExp)
 	gen.AddComment("Generando array")
 	newtmp1 := gen.NewTemp()
@@ -33,10 +34,12 @@ func (p Array) Ejecutar(ast *environment.AST, env interface{}, gen *generator.Ge
 	for _, exp := range p.ListExp {
 		val = exp.(interfaces.Expression)
 		arrType = val.Ejecutar(ast, env, gen).Type
+		arrVal++
 		gen.AddSetHeap("(int)"+newtmp2, val.Ejecutar(ast, env, gen).Value)
 		gen.AddExpression(newtmp2, newtmp2, "1", "+")
 	}
 	result = environment.NewValue(newtmp1, true, environment.ARRAY, false, false, false)
 	result.ArrType = arrType
+	result.ArrSize = arrVal
 	return result
 }

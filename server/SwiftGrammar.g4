@@ -281,8 +281,8 @@ expr returns [interfaces.Expression e]
     }
 | TRU { $e = expressions.NewPrimitive($TRU.line, $TRU.pos, true, environment.BOOLEAN) }
 | FAL { $e = expressions.NewPrimitive($FAL.line, $FAL.pos, false, environment.BOOLEAN) }
-| ID PUNTO COUNT { $e = expressions.NewCount($ID.line, $ID.pos, $ID.text) }
-// | ID PUNTO ISEMPTY { $e = expressions.NewIsEmpty($ID.line, $ID.pos, $ID.text) }
+| cnt = count { $e = $cnt.cn }
+| ID2=expr PUNTO ISEMPTY { $e = expressions.NewIsEmpty($ID2.start.GetLine(), $ID2.start.GetColumn(), $ID2.e) }
 | NIL { $e = expressions.NewPrimitive($NIL.line, $NIL.pos, "nil", environment.NIL) }
 ;
 
@@ -317,6 +317,12 @@ listArray returns[interfaces.Expression p]
 | list = listArray types IG CORIZQ expr CORDER { $p = expressions.NewArrayAccess($list.start.GetLine(), $list.start.GetColumn(), $list.p, $expr.e) }
 | ID { $p = expressions.NewCallVar($ID.line, $ID.pos, $ID.text)}
 ;
+
+count returns[interfaces.Expression cn]
+: cnt = count PUNTO COUNT { $cn = expressions.NewCount($cnt.start.GetLine(), $cnt.start.GetColumn(),$cnt.cn) }
+| ID { $cn = expressions.NewCallVar($ID.line, $ID.pos, $ID.text)}
+;
+
 
 exprComa returns[interfaces.Expression t]
 : left=exprComa op=COMA right=expr { $t = expressions.NewOperation($left.start.GetLine(), $left.start.GetColumn(), $left.t, $op.text, $right.e) }

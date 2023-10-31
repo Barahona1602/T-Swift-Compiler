@@ -24,9 +24,9 @@ print(5+8*5-arr2[2])
 print("arr3: ")
 print(arr3[4]*8)
 
-// print("=============================================")
-// print("================FUNCIONES====================")
-// print("=============================================")
+print("=============================================")
+print("================FUNCIONES====================")
+print("=============================================")
 
 // arr1.append(9)
 // print("append arr1: ", arr1[4])
@@ -38,8 +38,10 @@ print(arr3[4]*8)
 // arr3.remove(at: 4)
 // print("append arr3: ", arr3[4])
 
-// print("arr1 vacío: ", arr1.isEmpty)
-// print("arr1 cantidad: ", arr1.count)
+print("arr1 vacío: ")
+print(arr1.isEmpty)
+print("arr1 cantidad: ")
+print(arr1.count)
 
 /*
 --------------------------

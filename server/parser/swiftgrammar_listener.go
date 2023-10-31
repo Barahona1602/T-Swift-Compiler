@@ -82,6 +82,9 @@ type SwiftGrammarListener interface {
 	// EnterListArray is called when entering the listArray production.
 	EnterListArray(c *ListArrayContext)
 
+	// EnterCount is called when entering the count production.
+	EnterCount(c *CountContext)
+
 	// EnterExprComa is called when entering the exprComa production.
 	EnterExprComa(c *ExprComaContext)
 
@@ -159,6 +162,9 @@ type SwiftGrammarListener interface {
 
 	// ExitListArray is called when exiting the listArray production.
 	ExitListArray(c *ListArrayContext)
+
+	// ExitCount is called when exiting the count production.
+	ExitCount(c *CountContext)
 
 	// ExitExprComa is called when exiting the exprComa production.
 	ExitExprComa(c *ExprComaContext)

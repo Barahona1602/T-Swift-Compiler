@@ -60,7 +60,6 @@ func (p Primitive) Ejecutar(ast *environment.AST, env interface{}, gen *generato
 		result.FalseLabel = append(result.FalseLabel, falseLabel)
 	} else if p.Tipo == environment.NIL {
 		result = environment.NewValue("", false, environment.NIL, false, false, false)
-		gen.AddComment("Primitivo nil")
 	}
 	return result
 }

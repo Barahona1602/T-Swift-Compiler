@@ -170,6 +170,12 @@ func (s *BaseSwiftGrammarListener) EnterListArray(ctx *ListArrayContext) {}
 // ExitListArray is called when production listArray is exited.
 func (s *BaseSwiftGrammarListener) ExitListArray(ctx *ListArrayContext) {}
 
+// EnterCount is called when production count is entered.
+func (s *BaseSwiftGrammarListener) EnterCount(ctx *CountContext) {}
+
+// ExitCount is called when production count is exited.
+func (s *BaseSwiftGrammarListener) ExitCount(ctx *CountContext) {}
+
 // EnterExprComa is called when production exprComa is entered.
 func (s *BaseSwiftGrammarListener) EnterExprComa(ctx *ExprComaContext) {}
 
