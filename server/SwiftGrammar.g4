@@ -46,7 +46,7 @@ instruction returns [interfaces.Instruction inst]
 | guardstmt { $inst = $guardstmt.grd }
 | breakstmt { $inst = $breakstmt.brk }
 | continuestmt { $inst = $continuestmt.cnt }
-// | fnArray { $inst = $fnArray.p }
+| fnArray { $inst = $fnArray.p }
 | structCreation { $inst = $structCreation.dec }
 // | returnstmt { $inst = $returnstmt.ret }
 | fnstmt { $inst = $fnstmt.fn }
@@ -104,11 +104,11 @@ continuestmt returns [interfaces.Instruction cnt]
 // | RETURN { $ret = instructions.NewReturn($RETURN.line, $RETURN.pos, nil) }
 // ;
 
-// fnArray returns[interfaces.Instruction p]
-// : ID PUNTO APPEND PARIZQ expr PARDER { $p = instructions.NewAppend($ID.line, $ID.pos, $ID.text, $expr.e) }
-// | ID PUNTO REMOVE PARIZQ AT D_PTS expr PARDER { $p = instructions.NewRemoveAt($ID.line, $ID.pos, $ID.text, $expr.e) }
-// | ID PUNTO REMOVELAST PARIZQ PARDER { $p = instructions.NewRemoveLast($ID.line, $ID.pos, $ID.text) }
-// ;
+fnArray returns[interfaces.Instruction p]
+: APP=expr PUNTO APPEND PARIZQ expr PARDER { $p = instructions.NewAppend($APP.start.GetLine(), $APP.start.GetColumn(), $APP.e, $expr.e) }
+| RTA=expr PUNTO REMOVE PARIZQ AT D_PTS expr PARDER { $p = instructions.NewRemoveAt($RTA.start.GetLine(), $RTA.start.GetColumn(), $RTA.e, $expr.e) }
+| REM=expr PUNTO REMOVELAST PARIZQ PARDER { $p = instructions.NewRemoveLast($REM.start.GetLine(), $REM.start.GetColumn(), $REM.e) }
+;
 
 structCreation returns[interfaces.Instruction dec]
 : STRUCT ID LLAVEIZQ listStructDec LLAVEDER { $dec = instructions.NewStruct($STRUCT.line, $STRUCT.pos, $ID.text, $listStructDec.l) }

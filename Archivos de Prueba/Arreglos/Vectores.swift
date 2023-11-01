@@ -28,20 +28,23 @@ print("=============================================")
 print("================FUNCIONES====================")
 print("=============================================")
 
-// arr1.append(9)
-// print("append arr1: ", arr1[4])
-
-// arr2.removeLast()
-// arr2.append(6)
-// print("append arr2: ", arr2[5])
-
-// arr3.remove(at: 4)
-// print("append arr3: ", arr3[4])
 
 print("arr1 vacío: ")
 print(arr1.isEmpty)
 print("arr1 cantidad: ")
 print(arr1.count)
+
+
+
+print("=============================================")
+print("===============FUNCIONES 2===================")
+print("=============================================")
+arr2.removeLast()
+arr2.append(6)
+print("append arr2: ", arr2[5])
+
+
+
 
 /*
 --------------------------

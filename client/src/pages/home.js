@@ -34,6 +34,11 @@ const Home = () => {
         await setCodeArray(resp?.ArrCode)
     };
 
+    const OptimizeCode = async() => {
+        const resp = await PostMethod(interpreterAPI+'Optimizer', { Content: codeArray })
+        await setOptimizeText(resp?.Output)
+    }
+
     const handleFileUpload = () => {
         uploadInputRef.current.click();
     };
@@ -69,10 +74,6 @@ const Home = () => {
         setShowSvgModal(false);
     };
 
-    const OptimizeCode = async() => {
-        const resp = await PostMethod(interpreterAPI+'Optimizer', { Content: codeArray })
-        await setOptimizeText(resp?.Output)
-    }
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

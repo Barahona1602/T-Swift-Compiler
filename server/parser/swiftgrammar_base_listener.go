@@ -92,6 +92,12 @@ func (s *BaseSwiftGrammarListener) EnterContinuestmt(ctx *ContinuestmtContext) {
 // ExitContinuestmt is called when production continuestmt is exited.
 func (s *BaseSwiftGrammarListener) ExitContinuestmt(ctx *ContinuestmtContext) {}
 
+// EnterFnArray is called when production fnArray is entered.
+func (s *BaseSwiftGrammarListener) EnterFnArray(ctx *FnArrayContext) {}
+
+// ExitFnArray is called when production fnArray is exited.
+func (s *BaseSwiftGrammarListener) ExitFnArray(ctx *FnArrayContext) {}
+
 // EnterStructCreation is called when production structCreation is entered.
 func (s *BaseSwiftGrammarListener) EnterStructCreation(ctx *StructCreationContext) {}
 
