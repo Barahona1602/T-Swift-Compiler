@@ -39,9 +39,15 @@ print(arr1.count)
 print("=============================================")
 print("===============FUNCIONES 2===================")
 print("=============================================")
+var arr2: [Int] = [40, 21, 1, 3, 14, 4]
 arr2.removeLast()
 arr2.append(6)
-print("append arr2: ", arr2[5])
+print("append y remove arr2: ")
+print(arr2[5])
+arr2.remove(at: 5)
+arr2.append(14)
+print("append y remove at arr2: ")
+print(arr2[5])
 
 
 
