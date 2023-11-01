@@ -8,6 +8,7 @@ const interpreterAPI = process.env.REACT_APP_API_URL_INTERPRETER;
 
 const Home = () => {
     const [codeText, setCodeText] = useState('');
+    const [codeArray, setCodeArray] = useState([])
     const [consoleText, setConsoleText] = useState('');
     const [html, setHtml] = useState('');
     const [showHtml, setShowHtml] = useState(false);
@@ -17,6 +18,7 @@ const Home = () => {
     const [showSvgModal, setShowSvgModal] = useState(false);
     const [showHtmlErrModal, setShowHtmlErrModal] = useState(false);
     const [showHtmlModal, setShowHtmlModal] = useState(false);
+    const [optimizeText, setOptimizeText] = useState('')
 
     const uploadInputRef = useRef(null);
 
@@ -29,6 +31,7 @@ const Home = () => {
         const newHtmlErr = resp?.TablaErr;
         await setHtmlErr(newHtmlErr);
         await setConsoleText(resp?.Output);
+        await setCodeArray(resp?.ArrCode)
     };
 
     const handleFileUpload = () => {
@@ -65,6 +68,11 @@ const Home = () => {
         setShowHtml(false);
         setShowSvgModal(false);
     };
+
+    const OptimizeCode = async() => {
+        const resp = await PostMethod(interpreterAPI+'Optimizer', { Content: codeArray })
+        await setOptimizeText(resp?.Output)
+    }
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -134,6 +142,20 @@ const Home = () => {
             </div>
             <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'left', width: '100%', marginLeft: '0%', paddingTop: '1%' }}>
                 <Button label="RUN >>>" className="p-button-success" onClick={CompileInterpreter} style={{ marginBottom: '1%' }} />
+                <Button label="OPTIMIZAR" className="p-button-success" onClick={OptimizeCode} style={{ marginBottom: '1%', marginLeft: '1%' }} />
+            </div>
+            <label>Optimización</label>
+            <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'left', width: '100%', paddingTop: '1%' }}>
+                    
+                    <MonacoEditor
+                        height={'400px'}
+                        width={'1450px'}
+                        language="swift"
+                        theme="vs-dark"
+                        value={optimizeText}
+                        options={{ readOnly: true, scrollBeyondLastLine: false }}
+
+                    />
             </div>
             {showHtml && <div dangerouslySetInnerHTML={{ __html: html }} />}
             {showHtmlErr && <div dangerouslySetInnerHTML={{ __html: htmlErr }} />}
